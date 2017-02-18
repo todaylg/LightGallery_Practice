@@ -138,7 +138,7 @@ LightGallery.prototype.core = function (index) {
     document.getElementById('LG_CloseBtn').addEventListener('click', function (e) {
         document.getElementsByClassName('LG_BG')[0].parentNode.removeChild(document.getElementsByClassName('LG_BG')[0]);
         document.getElementsByClassName('LG_Wrap')[0].parentNode.removeChild(document.getElementsByClassName('LG_Wrap')[0]);
-        document.body.classList.remove('lg-on');
+        document.body.classList.remove('LG_Open');
     });
     _this.Items[index].classList.add('LG_Current');
     if (index == _this.Items.length - 1) {

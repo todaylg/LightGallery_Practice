@@ -17,51 +17,46 @@ if(!document.getElementsByClassName){
 }
 
 function LightGallery(element){
-  var _this = this;
-  _this.element = element;
-  _this.items = [];
-  _this.items = element.children;
-  for (var i = 0; i < _this.items.length; i++) {
-    (function(index) {
-      _this.items[index].addEventListener('click',(e) => {
+	var _this = this;
+	_this.element = element;
+	_this.items = [];
+	_this.items = element.children;
+	for (var i = 0; i < _this.items.length; i++) {
+		(function(index) {
+			_this.items[index].addEventListener('click',(e) => {
 
-        e.preventDefault();
+        
+				e.preventDefault();
+				if (!document.body.classList.contains('LG_Open')) {
+					_this.init(index);
+					document.body.classList.add('LG_Open');
+				}
+			},false);
 
-        let customEvent = new CustomEvent(event, {
-          detail: null
-        });
-        _this.element.dispatchEvent(customEvent);
-        if (!document.body.classList.contains('lg-on')) {
-          _this.init(index);
-          document.body.classList.add('lg-on');
-        }
-      },false);
+		})(i);
 
-    })(i);
-
-  }
+	}
 }
 
 LightGallery.prototype.init = function(index){
-  var _this = this;
-  _this.core(index);
+	var _this = this;
+	_this.core(index);
 };
 LightGallery.prototype.core = function(index){
     var _this = this;
     var list = '',action = '',template;
     //insertAdjacentHTML() 将指定的文本解析为HTML或XML，并将生成的节点插入到指定位置的DOM树中。它不会重新解析它正在使用的元素，因此它不会破坏元素内的现有元素。这避免了额外的序列化步骤，使其比直接innerHTML操作更快。
     document.body.insertAdjacentHTML('beforeend', '<div class="LG_BG"></div>');
-    setVendor(document.querySelector('.LG_BG'), 'TransitionDuration','150ms');
 
     for (var i = 0; i < _this.items.length; i++) {
         list += '<div class="LG_Item"><div class="LG_Imgwrap"><img class="LG_image" src="'+_this.items[i].getElementsByTagName("img")[0].getAttribute("src")+'"/></div></div>';    
     }
 
     if (_this.items.length > 1) {
-      action = '<div class="LG_Actions">' +
-      '<div class="LG_PrevArrow"> < </div>' +
-      '<div class="LG_NextArrow"> > </div>' +
-      '</div>';
+    	action = '<div class="LG_Actions">' +
+    	'<div class="LG_PrevArrow"> < </div>' +
+    	'<div class="LG_NextArrow"> > </div>' +
+    	'</div>';
     }
     template = '<div class="LG_Wrap">' +
     '<div class="LG" style="width:100%; height:100%">' +
@@ -73,13 +68,13 @@ LightGallery.prototype.core = function(index){
     '</div>';
 
     document.body.insertAdjacentHTML('beforeend', template);
-
+    
     _this.Wrap = document.querySelector('.LG_Wrap');
     _this.Items = _this.Wrap.querySelectorAll('.LG_Item');
-    document.getElementById('LG_CloseBtn').addEventListener('click',(e)=>{
+document.getElementById('LG_CloseBtn').addEventListener('click',(e)=>{
         document.getElementsByClassName('LG_BG')[0].parentNode.removeChild(document.getElementsByClassName('LG_BG')[0]);
         document.getElementsByClassName('LG_Wrap')[0].parentNode.removeChild(document.getElementsByClassName('LG_Wrap')[0]);
-        document.body.classList.remove('lg-on');
+        document.body.classList.remove('LG_Open');
     })
     _this.Items[index].classList.add('LG_Current');
     if(index == _this.Items.length-1){

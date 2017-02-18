@@ -75,10 +75,10 @@ a{text-decoration:none; color:#656565;}
     top: 0;
     bottom: 0;
 }
-.LG_Wrap .LG_Item:before, .LG_Wrap .LG_Imgwrap:before {
+.LG_Wrap .LG_Imgwrap:before {
     content: "";
     display: inline-block;
-    height: 50%;/*还有讲究的，待研究一下，偶摩西罗伊*/
+    height: 50%;
     width: 1px;
     margin-right: -1px;
 }
