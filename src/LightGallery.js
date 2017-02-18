@@ -17,34 +17,34 @@ if(!document.getElementsByClassName){
 }
 
 function LightGallery(element){
-	var _this = this;
-	_this.element = element;
-	_this.items = [];
-	_this.items = element.children;
-	for (var i = 0; i < _this.items.length; i++) {
-		(function(index) {
-			_this.items[index].addEventListener('click',(e) => {
+  var _this = this;
+  _this.element = element;
+  _this.items = [];
+  _this.items = element.children;
+  for (var i = 0; i < _this.items.length; i++) {
+    (function(index) {
+      _this.items[index].addEventListener('click',(e) => {
 
-				e.preventDefault();
+        e.preventDefault();
 
-				let customEvent = new CustomEvent(event, {
-					detail: null
-				});
-				_this.element.dispatchEvent(customEvent);
-				if (!document.body.classList.contains('lg-on')) {
-					_this.init(index);
-					document.body.classList.add('lg-on');
-				}
-			},false);
+        let customEvent = new CustomEvent(event, {
+          detail: null
+        });
+        _this.element.dispatchEvent(customEvent);
+        if (!document.body.classList.contains('lg-on')) {
+          _this.init(index);
+          document.body.classList.add('lg-on');
+        }
+      },false);
 
-		})(i);
+    })(i);
 
-	}
+  }
 }
 
 LightGallery.prototype.init = function(index){
-	var _this = this;
-	_this.core(index);
+  var _this = this;
+  _this.core(index);
 };
 LightGallery.prototype.core = function(index){
     var _this = this;
@@ -58,10 +58,10 @@ LightGallery.prototype.core = function(index){
     }
 
     if (_this.items.length > 1) {
-    	action = '<div class="LG_Actions">' +
-    	'<div class="LG_PrevArrow"> < </div>' +
-    	'<div class="LG_NextArrow"> > </div>' +
-    	'</div>';
+      action = '<div class="LG_Actions">' +
+      '<div class="LG_PrevArrow"> < </div>' +
+      '<div class="LG_NextArrow"> > </div>' +
+      '</div>';
     }
     template = '<div class="LG_Wrap">' +
     '<div class="LG" style="width:100%; height:100%">' +
@@ -93,7 +93,10 @@ LightGallery.prototype.core = function(index){
    _this.Items[index-1].classList.add('LG_Pre');
 }
 document.getElementsByClassName("LG_PrevArrow")[0].addEventListener('click',(e)=>{
-        //TODO只有一张图的时候
+        if(_this.Items.length <=1){
+          return;
+        }
+
         var Pre = document.getElementsByClassName("LG_Pre")[0];
         var Current = document.getElementsByClassName("LG_Current")[0];
         var Next = document.getElementsByClassName("LG_Next")[0];
@@ -112,6 +115,9 @@ document.getElementsByClassName("LG_PrevArrow")[0].addEventListener('click',(e)=
     });
 document.getElementsByClassName("LG_NextArrow")[0].addEventListener('click',(e)=>{
         //TODO只有一张图的时候
+        if(_this.Items.length<=1){
+          return;
+        }
         var Pre = document.getElementsByClassName("LG_Pre")[0];
         var Current = document.getElementsByClassName("LG_Current")[0];
         var Next = document.getElementsByClassName("LG_Next")[0];
