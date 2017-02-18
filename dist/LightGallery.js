@@ -1,69 +1,69 @@
 /******/ (function(modules) { // webpackBootstrap
-/******/    // The module cache
-/******/    var installedModules = {};
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
 
-/******/    // The require function
-/******/    function __webpack_require__(moduleId) {
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
 
-/******/        // Check if module is in cache
-/******/        if(installedModules[moduleId])
-/******/            return installedModules[moduleId].exports;
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
 
-/******/        // Create a new module (and put it into the cache)
-/******/        var module = installedModules[moduleId] = {
-/******/            i: moduleId,
-/******/            l: false,
-/******/            exports: {}
-/******/        };
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
 
-/******/        // Execute the module function
-/******/        modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 
-/******/        // Flag the module as loaded
-/******/        module.l = true;
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
 
-/******/        // Return the exports of the module
-/******/        return module.exports;
-/******/    }
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
 
 
-/******/    // expose the modules object (__webpack_modules__)
-/******/    __webpack_require__.m = modules;
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
 
-/******/    // expose the module cache
-/******/    __webpack_require__.c = installedModules;
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
 
-/******/    // identity function for calling harmony imports with the correct context
-/******/    __webpack_require__.i = function(value) { return value; };
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
 
-/******/    // define getter function for harmony exports
-/******/    __webpack_require__.d = function(exports, name, getter) {
-/******/        if(!__webpack_require__.o(exports, name)) {
-/******/            Object.defineProperty(exports, name, {
-/******/                configurable: false,
-/******/                enumerable: true,
-/******/                get: getter
-/******/            });
-/******/        }
-/******/    };
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
 
-/******/    // getDefaultExport function for compatibility with non-harmony modules
-/******/    __webpack_require__.n = function(module) {
-/******/        var getter = module && module.__esModule ?
-/******/            function getDefault() { return module['default']; } :
-/******/            function getModuleExports() { return module; };
-/******/        __webpack_require__.d(getter, 'a', getter);
-/******/        return getter;
-/******/    };
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
 
-/******/    // Object.prototype.hasOwnProperty.call
-/******/    __webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 
-/******/    // __webpack_public_path__
-/******/    __webpack_require__.p = "";
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
 
-/******/    // Load entry module and return exports
-/******/    return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -101,14 +101,9 @@ function LightGallery(element) {
             _this.items[index].addEventListener('click', function (e) {
 
                 e.preventDefault();
-
-                var customEvent = new CustomEvent(event, {
-                    detail: null
-                });
-                _this.element.dispatchEvent(customEvent);
-                if (!document.body.classList.contains('lg-on')) {
+                if (!document.body.classList.contains('LG_Open')) {
                     _this.init(index);
-                    document.body.classList.add('lg-on');
+                    document.body.classList.add('LG_Open');
                 }
             }, false);
         })(i);
@@ -126,7 +121,6 @@ LightGallery.prototype.core = function (index) {
         template;
     //insertAdjacentHTML() 将指定的文本解析为HTML或XML，并将生成的节点插入到指定位置的DOM树中。它不会重新解析它正在使用的元素，因此它不会破坏元素内的现有元素。这避免了额外的序列化步骤，使其比直接innerHTML操作更快。
     document.body.insertAdjacentHTML('beforeend', '<div class="LG_BG"></div>');
-    setVendor(document.querySelector('.LG_BG'), 'TransitionDuration', '150ms');
 
     for (var i = 0; i < _this.items.length; i++) {
         list += '<div class="LG_Item"><div class="LG_Imgwrap"><img class="LG_image" src="' + _this.items[i].getElementsByTagName("img")[0].getAttribute("src") + '"/></div></div>';

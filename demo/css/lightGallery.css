@@ -13,7 +13,7 @@ a{text-decoration:none; color:#656565;}
 .clearfix{zoom:1;}
 
 .LG_BG {
-    position: fixed;
+	position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -26,7 +26,7 @@ a{text-decoration:none; color:#656565;}
     transition: opacity 0.15s ease 0s;
 }
 .LG_Wrap {
-    width: 100%;
+	width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
@@ -38,7 +38,7 @@ a{text-decoration:none; color:#656565;}
     transition: opacity 0.15s ease 0s;
 }
 .LG{
-    position: relative;
+	position: relative;
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
@@ -46,7 +46,7 @@ a{text-decoration:none; color:#656565;}
     max-height: 100%;
 }
 .LG_List{
-    width: 100%;
+	width: 100%;
     height: 100%;
     position: absolute;
     left: 0;
@@ -54,17 +54,17 @@ a{text-decoration:none; color:#656565;}
     white-space: nowrap;
 }
 .LG_Item{
-    text-align: center;
+	text-align: center;
     position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 0;
+	opacity: 0;
 }
 .LG_Current{
-    opacity: 1;
+	opacity: 1;
 }
 .LG_Imgwrap{
-    display: inline-block;
+	display: inline-block;
     text-align: center;
     width: 100%;
     height: 100%;
@@ -84,7 +84,7 @@ a{text-decoration:none; color:#656565;}
 }
 /*vertical-align: middle 是相对于左边的高度垂直居中*/
 .LG_Imgwrap img{
-    display: inline-block;
+	display: inline-block;
     vertical-align: middle;
     max-width: 100%;
     max-height: 100%;
@@ -111,14 +111,14 @@ a{text-decoration:none; color:#656565;}
     right: 20px;
 }
 .LG_Bar{
-    z-index: 1082;
+	z-index: 1082;
     left: 0;
     position: absolute;
     top: 0;
     width: 100%;
 }
 #LG_CloseBtn{
-    color: #999;
+	color: #999;
     cursor: pointer;
     float: right;
     font-size: 24px;
@@ -134,7 +134,7 @@ a{text-decoration:none; color:#656565;}
     transition: color 0.2s linear;
 }
 
-.LG_Pre, .LG_NEXT, .LG_Current {
+.LG_Pre, .LG_Next, .LG_Current {
     -webkit-transition: -webkit-transform 1s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 0.1s ease 0s;
     -moz-transition: -moz-transform 1s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 0.1s ease 0s;
     -o-transition: -o-transform 1s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 0.1s ease 0s;
